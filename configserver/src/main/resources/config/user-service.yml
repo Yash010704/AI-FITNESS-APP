@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url:
+    username: postgres
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
+
+
+
+server:
+  port: 8081

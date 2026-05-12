@@ -1,0 +1,39 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/airecommendation
+      database: airecommendation
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: activity-processor-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer  # ✅ Keep String, ObjectMapper handles conversion
+      properties:
+        spring.json.trusted.packages: "*"   # ✅ ADDED: allows Jackson to deserialize any package
+
+gemini:
+  api:
+    url:
+    key:
+
+
+kafka:
+  topic:
+    name: activity-events
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: 8083
+
+logging:
+  level:
+    org.springframework.kafka: DEBUG
+    com.fitness.aiservice: DEBUG
